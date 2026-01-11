@@ -1,0 +1,172 @@
+.video {
+    padding: var(--section-padding);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--glass-border);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.header h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+}
+
+.desc {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+}
+
+.playerContainer {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mainPlayer {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-glow);
+}
+
+.playlist {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    max-height: 500px;
+    padding-right: 10px;
+}
+
+.playlist::-webkit-scrollbar {
+    width: 4px;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.playlistItem {
+    background: var(--bg-deep);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.playlistItem:hover {
+    background: var(--glass);
+    border-color: var(--primary);
+}
+
+.activeItem {
+    border-color: var(--primary);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.miniThumb {
+    width: 80px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--radius-sm);
+}
+
+.miniInfo h4 {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.miniInfo span {
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.playButton {
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+    transition: var(--transition);
+}
+
+.player {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease;
+}
+
+.player:hover .playButton {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(0, 212, 255, 0.8);
+}
+
+.playIcon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 15px 25px;
+    border-color: transparent transparent transparent var(--bg-deep);
+    margin-left: 5px;
+}
+
+@media (max-width: 992px) {
+    .playerContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .playlist {
+        max-height: none;
+        padding-right: 0;
+    }
+
+    .header h2 {
+        font-size: 2.2rem;
+    }
+
+    .playButton {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header h2 {
+        font-size: 2.2rem;
+    }
+
+    .playButton {
+        width: 60px;
+        height: 60px;
+    }
+}

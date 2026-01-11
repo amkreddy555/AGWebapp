@@ -1,0 +1,227 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: var(--transition);
+    background: transparent;
+}
+
+.scrolled {
+    padding: 1rem 0;
+    background: var(--bg-deep);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glow);
+}
+
+:global(.dark-theme) .scrolled {
+    background: rgba(5, 10, 30, 0.8);
+}
+
+/* Dark glass for both themes */
+:global(.light-theme) .scrolled {
+    background: rgba(5, 10, 30, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logoText h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1;
+    color: #ffffff;
+}
+
+.logoText span {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+}
+
+.desktopNav {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.navLinks {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.navItem {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.navItem:hover,
+.active {
+    color: var(--primary);
+}
+
+:global(.dark-theme) .navItem:hover,
+:global(.dark-theme) .active {
+    color: var(--gold);
+}
+
+.navItem::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: var(--transition);
+    border-radius: var(--radius-full);
+}
+
+.navItem:hover::after,
+.active::after {
+    width: 100%;
+}
+
+:global(.dark-theme) .navItem::after {
+    background: var(--gold);
+}
+
+:global(.light-theme) .navItem::after {
+    background: var(--primary);
+}
+
+.loginBtn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.7rem 1.8rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ffffff;
+    transition: var(--transition);
+}
+
+.themeToggle {
+    font-size: 1.2rem;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.themeToggle:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+}
+
+.loginBtn:hover {
+    background: var(--primary);
+    color: var(--bg-deep);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+.menuToggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    width: 30px;
+    z-index: 1001;
+}
+
+.menuToggle span {
+    display: block;
+    height: 2px;
+    background-color: #ffffff;
+    transition: var(--transition);
+}
+
+.menuOpen span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menuOpen span:nth-child(2) {
+    opacity: 0;
+}
+
+.menuOpen span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 992px) {
+    .desktopNav {
+        display: none;
+    }
+
+    .menuToggle {
+        display: flex;
+    }
+}
+
+.mobileNav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #050a1e;
+    z-index: 1000;
+    transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileNavVisible {
+    right: 0;
+}
+
+.mobileLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.mobileItem {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.mobileLoginBtn {
+    margin-top: 1rem;
+    background: var(--primary);
+    color: var(--bg-deep);
+    padding: 1rem 3rem;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
