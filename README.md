@@ -23,8 +23,9 @@ npm run dev
 For in-depth developer information, please refer to the following guides:
 
 - **[Architecture & Tech Stack](docs/ARCHITECTURE.md)**: Why we chose Next.js 15, React 19, and Tailwind 4. Includes architectural flow diagrams.
-- **[Deployment & Setup](docs/DEPLOYMENT.md)**: Detailed steps for local development, Vercel hosting, and environment variable configuration.
-- **[Design System (Glossy UI)](docs/DESIGN_SYSTEM.md)**: Understanding our Glassmorphism aesthetic, theme implementation, and component patterns.
+- [🚀 Deployment & Hosting](file:///d:/AQUAGENIUS/AWebapp/docs/DEPLOYMENT.md) - How to go live on Vercel, Netlify, or GitHub.
+- [🐍 Django Integration](file:///d:/AQUAGENIUS/AWebapp/docs/DJANGO_INTEGRATION.md) - How to bridge Next.js with a Django backend.
+- [🎨 Design System](file:///d:/AQUAGENIUS/AWebapp/docs/DESIGN_SYSTEM.md) - Glassmorphism, themes, and UI tokens.
 
 ## ✨ Core Features
 
