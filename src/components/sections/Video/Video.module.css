@@ -113,7 +113,16 @@
     transition: var(--transition);
 }
 
-.player {
+.playerWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.playerPlaceholder {
     width: 100%;
     height: 100%;
     display: flex;
@@ -126,9 +135,15 @@
     transition: background-image 0.5s ease;
 }
 
-.player:hover .playButton {
+.playerPlaceholder:hover .playButton {
     transform: scale(1.1);
     box-shadow: 0 0 50px rgba(0, 212, 255, 0.8);
+}
+
+.actualVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .playIcon {

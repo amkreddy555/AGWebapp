@@ -18,6 +18,7 @@ export default function ProductClient({ id }: ProductClientProps) {
     const [activeImage, setActiveImage] = useState(product?.image);
     const [isPaused, setIsPaused] = useState(false);
     const [showVideo, setShowVideo] = useState(false);
+    const [fade, setFade] = useState(false);
 
     useEffect(() => {
         if (!product || isPaused || showVideo) return;
@@ -25,11 +26,32 @@ export default function ProductClient({ id }: ProductClientProps) {
         const timer = setInterval(() => {
             const currentIdx = product.gallery.indexOf(activeImage);
             const nextIdx = (currentIdx + 1) % product.gallery.length;
-            setActiveImage(product.gallery[nextIdx]);
-        }, 2500);
+            handleImageChange(product.gallery[nextIdx]);
+        }, 3000);
 
         return () => clearInterval(timer);
     }, [activeImage, product, isPaused, showVideo]);
+
+    const handleImageChange = (newImg: string) => {
+        if (newImg === activeImage) return;
+        setFade(true);
+        setTimeout(() => {
+            setActiveImage(newImg);
+            setFade(false);
+        }, 300);
+    };
+
+    const nextImage = () => {
+        const currentIdx = product.gallery.indexOf(activeImage);
+        const nextIdx = (currentIdx + 1) % product.gallery.length;
+        handleImageChange(product.gallery[nextIdx]);
+    };
+
+    const prevImage = () => {
+        const currentIdx = product.gallery.indexOf(activeImage);
+        const prevIdx = (currentIdx - 1 + product.gallery.length) % product.gallery.length;
+        handleImageChange(product.gallery[prevIdx]);
+    };
 
     if (!product) return <div>Product Not Found</div>;
 
@@ -56,13 +78,17 @@ export default function ProductClient({ id }: ProductClientProps) {
                                         controls
                                     />
                                 ) : (
-                                    <Image
-                                        src={activeImage || product.image}
-                                        alt={product.name}
-                                        width={600}
-                                        height={600}
-                                        className={styles.productImg}
-                                    />
+                                    <>
+                                        <Image
+                                            src={activeImage || product.image}
+                                            alt={product.name}
+                                            width={600}
+                                            height={600}
+                                            className={`${styles.productImg} ${fade ? styles.fadeOut : ''}`}
+                                        />
+                                        <button className={`${styles.navBtn} ${styles.prevBtn}`} onClick={prevImage} aria-label="Previous image">‹</button>
+                                        <button className={`${styles.navBtn} ${styles.nextBtn}`} onClick={nextImage} aria-label="Next image">›</button>
+                                    </>
                                 )}
 
                                 <button
@@ -77,7 +103,7 @@ export default function ProductClient({ id }: ProductClientProps) {
                                     <div
                                         key={idx}
                                         className={`${styles.thumb} ${activeImage === img ? styles.activeThumb : ''}`}
-                                        onClick={() => setActiveImage(img)}
+                                        onClick={() => handleImageChange(img)}
                                     >
                                         <Image src={img} alt="Thumbnail icon" width={80} height={80} />
                                     </div>
